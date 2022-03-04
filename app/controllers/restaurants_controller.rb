@@ -1,7 +1,11 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: [:show, :destroy]
+  before_action :set_restaurant, only: %i[show destroy]
   def index
     @restaurants = Restaurant.all
+    respond_to do |format|
+      format.html
+      format.json { render json: { restaurants: @restaurants } }
+    end
   end
 
   def show
@@ -10,7 +14,7 @@ class RestaurantsController < ApplicationController
 
   def destroy
     @restaurant.destroy
-    redirect_to root_path
+    redirect_to restaurants_path
   end
 
   private
