@@ -2,6 +2,6 @@
 
 <ul>
   <% @restaurants.each do |restaurant| %>
-    <li><%= link_to restaurant.name, restaurant_path(restaurant) %></li>
+    <li><%= link_to restaurant.name, restaurant_path(restaurant) %> <%= link_to 'borrar', restaurant_path(restaurant), method: :delete, remote: true, class: "text-danger" %></li>
   <% end %>
 </ul>

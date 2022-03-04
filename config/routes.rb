@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'reviews/create'
-  resources :restaurants, only: %i[show] do
+  resources :restaurants, only: %i[show destroy] do
     resources :reviews, only: :create
   end
 
